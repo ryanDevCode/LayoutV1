@@ -9,7 +9,7 @@
     <meta name="author" content="pixelstrap">
     <link rel="icon" href="{{asset('assets/images/favicon.png')}}" type="image/x-icon">
     <link rel="shortcut icon" href="{{asset('assets/images/favicon.png')}}" type="image/x-icon">
-    <title>Cuba - Premium Admin Template</title>
+    <title>Rkive</title>
     <!-- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900&amp;display=swap" rel="stylesheet">
@@ -42,7 +42,7 @@
         @include('layouts.sidebar')
         <!-- Page Sidebar Ends-->
         <div class="page-body">
-          <div class="container-fluid">        
+          <div class="container-fluid">
             <div class="page-title">
               <div class="row">
                 <div class="col-6">
@@ -50,7 +50,7 @@
                 </div>
                 <div class="col-6">
                   <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('/')}}">                                       
+                    <li class="breadcrumb-item"><a href="{{ route('/')}}">
                       <svg class="stroke-icon">
                         <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-home') }}"></use>
                       </svg></a></li></li>
@@ -65,12 +65,12 @@
           <!-- Container-fluid Ends-->
         </div>
         <!-- footer start-->
-        @include('layouts.footer') 
-        
+        @include('layouts.footer')
+
       </div>
     </div>
     <!-- latest jquery-->
-    @include('layouts.script')  
+    @include('layouts.script')
     <!-- Plugin used-->
 
     {{-- <script type="text/javascript">

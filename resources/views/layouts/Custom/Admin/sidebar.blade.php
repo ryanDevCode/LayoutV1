@@ -16,7 +16,7 @@
                         <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2"
                                 aria-hidden="true"></i></div>
                     </li>
-                    <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="{{ route('index') }}">
+                    <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="{{ route('home.admin') }}">
                             <svg class="stroke-icon">
                                 <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-home') }}"></use>
                             </svg>
@@ -44,10 +44,18 @@
                             target="_self">
                             <i data-feather="file"></i>
                             <span>Reporting </span></a></li>
-                    <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="{{ route('admin.analytics') }}"
-                            target="_self">
+                    <li class="sidebar-list"><a class="sidebar-link sidebar-title"
+                            href="{{ route('admin.analytics') }}" target="_self">
                             <i data-feather="bar-chart"></i>
                             <span>Analytics </span></a></li>
+                    <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="{{ route('travel.index') }}"
+                            target="_self">
+                            <i data-feather="navigation-2"></i>
+                            <span>Travel Requests </span></a></li>
+                    <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="{{ route('travel-expense.index') }}"
+                            target="_self">
+                            <i data-feather="pie-chart"></i>
+                            <span>Monitor Travel Expenses </span></a></li>
                 </ul>
             </div>
             <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
