@@ -18,21 +18,6 @@ class TravelExpenseController extends Controller
      */
     public function index()
     {
-        // $keneme = TravelExpense::all();
-        // dd($keneme);
-//         $expenses = TravelExpense::with('trackRequests')->where('travel_request_id', 3)->get();
-// dd($expenses);
-
-        // dd($expense->travelRequests);
-
-        //of you want espicidif specific
-        // $travelRequestId = 123; // Replace with the actual ID
-        // $expenses = TravelExpense::where('travel_request_id', $travelRequestId)->get();
-        //total transportation
-
-        //total accomodation
-
-        //total meal
         $expenses = TravelExpense::with(['trackRequests','user'])->get();
 
         //total of each travel request with the same travel_id
