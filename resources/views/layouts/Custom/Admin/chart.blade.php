@@ -9,7 +9,7 @@
     <meta name="author" content="pixelstrap">
     <link rel="icon" href="{{asset('assets/images/favicon.png')}}" type="image/x-icon">
     <link rel="shortcut icon" href="{{asset('assets/images/favicon.png')}}" type="image/x-icon">
-    <title>Cuba - Premium Admin Template</title>
+    <title>Rkive</title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.common.min.js"></script>
 
