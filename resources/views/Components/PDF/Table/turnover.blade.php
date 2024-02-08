@@ -113,7 +113,7 @@
                                                 <tr>
                                                     <td>{{ $turnover->turnover_code }}</td>
                                                     <td>{{ $turnover->turnover_product_name }}</td>
-                                                    <td>{{ $turnover->turnover_cost_of_goods_sold }}</td>
+                                                    <td>₱{{ number_format($turnover->turnover_cost_of_goods_sold,2) }}</td>
                                                     <td>{{ $turnover->turnover_inventory_turnover_ratio }}</td>
                                                     <td>{{ $turnover->turnover_date }}</td>
                                                     <td>{{ $turnover->type->type_name }}</td>

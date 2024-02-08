@@ -25,7 +25,7 @@
                                         @foreach($balances as $balance)
                                             <tr>
                                                 <td>{{ $balance->balance_name }}</td>
-                                                <td>{{ $balance->balance_amount }}</td>
+                                                <td>₱{{ number_format($balance->balance_amount,2) }}</td>
                                                 {{-- <td>
                                                     @foreach ($departments as $department)
                                                         @if ($balance->balance_department == $department->department_code)

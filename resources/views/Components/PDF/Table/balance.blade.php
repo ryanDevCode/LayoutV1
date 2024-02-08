@@ -112,7 +112,7 @@
                                                 <tr>
                                                     <td>{{ $balance->balance_code }}</td>
                                                     <td>{{ $balance->balance_name }}</td>
-                                                    <td>{{ $balance->balance_amount }}</td>
+                                                    <td>₱{{ number_format($balance->balance_amount,2) }}</td>
                                                     <td>{{ $balance->balance_date }}</td>
                                                     <td>{{ $balance->type->type_name }}</td>
                                                     <td>{{ $balance->department->department_name }}</td>

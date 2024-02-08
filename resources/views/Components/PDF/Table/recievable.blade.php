@@ -114,7 +114,7 @@
                                                     <td>{{ $receivable->recievable_code }}</td>
                                                     <td>{{ $receivable->recievable_name }}</td>
                                                     <td>{{ $receivable->recievable_invoice_date }}</td>
-                                                    <td>{{ $receivable->recievable_amount }}</td>
+                                                    <td>₱{{ number_format($receivable->recievable_amount,2) }}</td>
                                                     <td>{{ $receivable->recievable_due_date }}</td>
                                                     <td>{{ $receivable->type->type_name }}</td>
                                                     <td>{{ $receivable->department->department_name }}</td>

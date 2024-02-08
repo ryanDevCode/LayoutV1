@@ -134,7 +134,7 @@
                                                 <tr class="text-center">
                                                     <td>{{ $bdgt->id }}</td>
                                                     <td>{{ $bdgt->budget_name }}</td>
-                                                    <td>{{ $bdgt->budget_amount }}</td>
+                                                    <td>₱{{ number_format($bdgt->budget_amount,2) }}</td>
                                                     <td>{{ $bdgt->budget_description }}</td>
                                                     <td>
                                                         @foreach ($categories as $category)
@@ -160,7 +160,7 @@
                                                         @endforeach
                                                     </td>
                                                     <td>{{ $bdgt->budget_approvedDate }}</td>
-                                                    <td>{{ $bdgt->budget_approvedAmount }}</td>
+                                                    <td>₱{{ number_format($bdgt->budget_approvedAmount,2) }}</td>
                                                     <td>{{ $bdgt->budget_notes }}</td>
                                                     <td>
                                                         <form

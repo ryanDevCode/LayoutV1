@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+
 class TravelRequestController extends Controller
 {
     /**
@@ -93,7 +94,7 @@ class TravelRequestController extends Controller
                     'destination' => $request->input('destination'),
                     'estimated_amount' => $request->input('estimated_amount'),
                     'notes' => $request->input('notes'),
-                    'status' =>$request->input('status'),
+                    'status' => $request->input('status'),
                     'approver' => Auth::user()->first_name,
                 ]);
             }
@@ -113,5 +114,69 @@ class TravelRequestController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+
+    // public function search($request){
+    //     $data = $request->input('search');
+    //     $users = User::all();
+    //     $travel = TravelRequest::all();
+
+    //     $travelRequest = TravelRequest::where(function($query)use($data){
+
+    //     })
+    //     if (is_null($department_code)) {
+    //         $budgets = Budget::where('id', 'like', '%' . $data . '%')->get();
+    //     } else {
+
+    //         $travelRequest = TravelRequest::where('budget_department', $department_code)
+    //             ->where(function ($query) use ($data) {
+    //                 $query->orWhere('budget_name', 'like', '%' . $data . '%')
+    //                     ->orWhere('budget_amount', 'like', '%' . $data . '%')
+    //                     ->orWhere('budget_description', 'like', '%' . $data . '%')
+    //                     ->orWhere('budget_category', 'like', '%' . $data . '%')
+    //                     ->orWhere('budget_startDate', 'like', '%' . $data . '%')
+    //                     ->orWhere('budget_endDate', 'like', '%' . $data . '%')
+    //                     ->orWhere('budget_status', 'like', '%' . $data . '%')
+    //                     ->orWhere('budget_approvedBy', 'like', '%' . $data . '%')
+    //                     ->orWhere('budget_approvedDate', 'like', '%' . $data . '%')
+    //                     ->orWhere('budget_approvedAmount', 'like', '%' . $data . '%')
+    //                     ->orWhere('budget_notes', 'like', '%' . $data . '%');
+    //             })->get();
+    //     }
+
+    //     if ($budgets->isEmpty() && !is_null($department_code)) {
+
+    //         return view('dashboard.admin.budget.show', compact('department_code'))->with('error', 'No matching records found.');
+    //     }
+
+    //     return view('dashboard.admin.budget.show', compact('budgets', 'department_code', 'users', 'status', 'categories'));
+    // }
+
+
+    public function search(Request $request)
+    {
+        $query = TravelRequest::query(); // Start with base query
+
+        // Search for the query string in multiple columns
+        if ($request->has('search')) {
+            $query->where(function ($query) use ($request) {
+                $query->where('destination', 'like', '%' . $request->search . '%')
+                    ->orWhere('project_title', 'like', '%' . $request->search . '%')
+                    ->orWhere('user_id', $request->search)  // Assuming user_id is an integer
+                    ->orWhere('status', $request->search);
+            });
+        }
+        if ($request->has('sort_by') && $request->has('sort_order')) {
+            $sortBy = $request->sort_by;
+            $sortOrder = $request->sort_order;
+            $query->orderBy($sortBy, $sortOrder);
+        }
+
+        // Paginate results (if needed)
+        $perPage = $request->has('per_page') ? $request->per_page : 10;
+        $travelRequests = $query->paginate($perPage);
+
+        return view('dashboard.admin.travel.index', compact('travelRequests'));
     }
 }

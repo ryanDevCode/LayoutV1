@@ -24,6 +24,36 @@
 @endsection
 
 @section('style')
+    <style>
+        th.sortable {
+            cursor: pointer;
+        }
+
+        th.sortable:hover {
+            background-color: #f2f2f2;
+        }
+
+        th.sortable::after {
+            content: '\25B4';
+            color: #000;
+
+        }
+
+        th.sorted-asc::after {
+            content: '\25BE';
+            color: #000;
+        }
+
+        th.sorted-desc::after {
+            content: '\25B4';
+            color: #000;
+        }
+
+        .table-container {
+            height: 500px;
+            overflow-y: scroll;
+        }
+    </style>
 @endsection
 
 @section('breadcrumb-title')
@@ -64,7 +94,8 @@
                                 <a href="{{ route('admin.budgets.create') }}" class="btn btn-primary">Add Travel Request</a>
                             </div>
                             <div class="col-md-6 text-end">
-                                <form action="#" method="get" class="d-flex justify-content-end mb-">
+                                <form action="{{ route('travel.search') }}" method="get"
+                                    class="d-flex justify-content-end mb-">
                                     @csrf
                                     <label for="search" class="visually-hidden">Search</label>
                                     <div class="input-group">
@@ -149,11 +180,65 @@
     </div>
     <script type="text/javascript">
         var session_layout = '{{ session()->get('layout') }}';
-
     </script>
 @endsection
 
 @section('script')
+    {{-- Column sorting --}}
+    <script>
+        const table = document.querySelector('.table');
+
+        const handleSort = (event) => {
+            const element = event.target;
+            const sortBy = element.textContent.toLowerCase(); // Get clicked column
+            let sortOrder = 'asc';
+
+            if (element.classList.contains('desc')) {
+                sortOrder = 'desc';
+                element.classList.remove('desc');
+            } else {
+                element.classList.add('desc');
+            }
+
+            // Redirect to the search page with updated sort parameters
+            window.location.href =
+                `{{ route('travel.search') }}?search={{ request()->search }}&sort_by=${sortBy}&sort_order=${sortOrder}`;
+        };
+
+        table.querySelectorAll('.sortable').forEach(element => {
+            element.addEventListener('click', handleSort);
+        });
+    </script>
+    {{-- <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            const getCellValue = (row, index) => row.children[index].innerText || row.children[index].textContent;
+
+            const comparer = (index, asc) => (a, b) => {
+                const valA = getCellValue(asc ? a : b, index);
+                const valB = getCellValue(asc ? b : a, index);
+                return isNaN(valA) || isNaN(valB) ? valA.localeCompare(valB) : valA - valB;
+            };
+
+            document.querySelectorAll('th.sortable').forEach(headerCell => {
+                headerCell.addEventListener('click', () => {
+                    const table = headerCell.closest('table');
+                    const thIndex = Array.prototype.indexOf.call(headerCell.parentNode.children,
+                        headerCell);
+                    const isAsc = headerCell.classList.contains('sorted-asc');
+                    const isDesc = headerCell.classList.contains('sorted-desc');
+                    const direction = isAsc ? 'desc' : 'asc';
+
+                    table.querySelectorAll('th').forEach(th => th.classList.remove('sorted-asc',
+                        'sorted-desc'));
+                    headerCell.classList.toggle(`sorted-${direction}`);
+
+                    Array.from(table.querySelectorAll('tbody tr'))
+                        .sort(comparer(thIndex, isAsc))
+                        .forEach(tr => table.querySelector('tbody').appendChild(tr));
+                });
+            });
+        });
+    </script> --}}
     <!-- Validation JS -->
     <script src="{{ asset('assets/js/form-validation-custom.js') }}"></script>
     <!-- Datepicker JS -->

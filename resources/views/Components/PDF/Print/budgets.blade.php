@@ -36,7 +36,7 @@
                                             <td>{{ $budget->budget_name }}</td>
                                             <td></td>
                                             <td><b>Amount</b></td>
-                                            <td>{{ $budget->budget_amount }}</td>
+                                            <td>₱{{ number_format($budget->budget_amount ,2)}}</td>
                                         </tr>
 
                                         <tr>
@@ -86,7 +86,7 @@
                                             </td>
                                             <td></td>
                                             <td><b>Approved Amount</b></td>
-                                            <td>{{ $budget->budget_approvedAmount }}</td>
+                                            <td>₱{{ number_format($budget->budget_approvedAmount,2) }}</td>
                                         </tr>
 
                                         <tr>

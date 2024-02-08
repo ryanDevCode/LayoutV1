@@ -141,7 +141,7 @@
                                                 <tr class="text-center">
                                                     <td>{{ $request->request_code }}</td>
                                                     <td>{{ $request->request_name }}</td>
-                                                    <td>{{ $request->request_amount }}</td>
+                                                    <td>₱{{ number_format($request->request_amount,2) }}</td>
                                                     <td>{{ $request->request_description }}</td>
                                                     <td>
                                                         @foreach ($categories as $category)
@@ -175,7 +175,7 @@
                                                         @endforeach
                                                     </td>
                                                     <td>{{ $request->request_approvedDate }}</td>
-                                                    <td>{{ $request->request_approvedAmount }}</td>
+                                                    <td>₱{{ number_format($request->request_approvedAmount,2) }}</td>
                                                     <td>{{ $request->request_notes }}</td>
                                                     <td>
                                                         <form

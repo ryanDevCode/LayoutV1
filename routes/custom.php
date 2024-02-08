@@ -71,8 +71,10 @@ Route::middleware(['auth', checkRole::class . ':102'])->group(function () {
     Route::get('admin/chart', [ChartController::class,'adminchart'])->name('admin.analytics');
 
     Route::resource('admin/travel-requests', TravelRequestController::class)->names('travel');
-
+    Route::get('admin/travel-requests/search', 'TravelRequestController@search')->name('travel.search');
     Route::resource('admin/travel-expenses', TravelExpenseController::class)->names('travel-expense');
+
+    // Route::get('admin/travel-requests/{request}', TravelRequestController::class, 'find')->name('travel-search');
 
 
 });

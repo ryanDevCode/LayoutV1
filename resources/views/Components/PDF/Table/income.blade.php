@@ -112,7 +112,7 @@
                                                 <tr>
                                                     <td>{{ $income->income_code }}</td>
                                                     <td>{{ $income->income_name }}</td>
-                                                    <td>{{ $income->income_amount }}</td>
+                                                    <td>₱{{ number_format($income->income_amount,2) }}</td>
                                                     <td>{{ $income->income_date }}</td>
                                                     <td>{{ $income->type->type_name }}</td>
                                                     <td>{{ $income->department->department_name }}</td>

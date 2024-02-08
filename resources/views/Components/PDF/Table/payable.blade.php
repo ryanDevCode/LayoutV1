@@ -110,7 +110,7 @@
                                                 <tr>
                                                     <td>{{ $payable->payable_code }}</td>
                                                     <td>{{ $payable->payable_name }}</td>
-                                                    <td>{{ $payable->payable_amount }}</td>
+                                                    <td>₱{{ number_format($payable->payable_amount,2) }}</td>
                                                     <td>{{ $payable->payable_date }}</td>
                                                     <td>{{ $payable->type->type_name }}</td>
                                                     <td>{{ $payable->department->department_name }}</td>

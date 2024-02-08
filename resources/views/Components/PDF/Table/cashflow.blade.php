@@ -112,7 +112,7 @@
                                                 <tr>
                                                     <td>{{ $cashflow->cashflow_info }}</td>
                                                     <td>{{ $cashflow->cashflow_name }}</td>
-                                                    <td>{{ $cashflow->cashflow_amount }}</td>
+                                                    <td>₱{{ number_format($cashflow->cashflow_amount,2) }}</td>
                                                     <td>{{ $cashflow->cashflow_date }}</td>
                                                     <td>{{ $cashflow->type->type_name }}</td>
                                                     <td>{{ $cashflow->department->department_name }}</td>

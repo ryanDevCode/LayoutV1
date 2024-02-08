@@ -28,7 +28,7 @@
                                             <tr>
                                                 <td>{{ $sale->sales_code }}</td>
                                                 <td>{{ $sale->sales_product_name }}</td>
-                                                <td>{{ $sale->sales_revenue }}</td>
+                                                <td>₱{{ number_format($sale->sales_revenue,2) }}</td>
                                                 <td>{{ $sale->sales_date }}</td>
                                                 <td>{{ $sale->type->type_name }}</td>
                                                 <td>{{ $sale->department->department_name }}</td>

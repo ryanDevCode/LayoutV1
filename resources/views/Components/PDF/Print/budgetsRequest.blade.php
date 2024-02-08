@@ -35,7 +35,7 @@
                                             <td>{{ $foundBudget->budget_name }}</td>
                                             <td></td>
                                             <td><b>Amount</b></td>
-                                            <td>{{ $foundBudget->budget_amount }}</td>
+                                            <td>{{ number_format($foundBudget->budget_amount,2) }}</td>
                                         </tr>
 
                                         <tr>
@@ -139,7 +139,7 @@
                                         <td>{{ $requestBudget->request_name }}</td>
                                         <td></td>
                                         <td><b>Amount</b></td>
-                                        <td>{{ $requestBudget->request_amount }}</td>
+                                        <td>{{ number_format($requestBudget->request_amount,2) }}</td>
                                     </tr>
 
                                     <tr>
@@ -181,7 +181,7 @@
                                         </td>
                                         <td></td>
                                         <td><b>Approved Amount</b></td>
-                                        <td>{{ $requestBudget->request_approvedAmount }}</td>
+                                        <td>{{ number_format($requestBudget->request_approvedAmount,2) }}</td>
                                     </tr>
 
                                     <tr>
