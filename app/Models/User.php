@@ -48,5 +48,13 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Budgets::class,'request_approvedBy', 'username');
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id'); // Specify the foreign key
+    }
+
+    public function expenseTracks(){
+        return $this->hasMany(TravelExpense::class, 'user_id');
+    }
 
 }

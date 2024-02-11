@@ -10,7 +10,8 @@ use App\Http\Controllers\Components\StoreController;
 
 use App\Http\Controllers\Components\Admin\Budgets as AdminBudgets;
 use App\Http\Controllers\Components\Admin\RequestBudgets as AdminRequestBudgets;
-
+use App\Http\Controllers\Components\Admin\TravelRequestController;
+use App\Http\Controllers\Components\Admin\TravelExpenseController;
 
 use App\Http\Controllers\Components\User\Budgets as UserBudgets;
 use App\Http\Controllers\Components\User\RequestBudgets as UserRequestBudgets;
@@ -58,6 +59,7 @@ Route::get('/block', [AuthController::class, 'block']);
 
 // Admin
 Route::middleware(['auth', checkRole::class . ':102'])->group(function () {
+    Route::view('home', 'layouts.custom.admin.home')->name('home.admin');
     Route::get('/admin/dashboard', [StoreController::class, 'adminDashboard'])->name('admin.dashboard');
 
     Route::resource('/admin/budgets', AdminBudgets::class)->names('admin.budgets');
@@ -67,6 +69,12 @@ Route::middleware(['auth', checkRole::class . ':102'])->group(function () {
     Route::get('admin/budget/requests/{department_code?}/search', [AdminRequestBudgets::class, 'search'])->name('admin.budgets.requests.search');
 
     Route::get('admin/chart', [ChartController::class,'adminchart'])->name('admin.analytics');
+
+    Route::resource('admin/travel-requests', TravelRequestController::class)->names('travel');
+
+    Route::resource('admin/travel-expenses', TravelExpenseController::class)->names('travel-expense');
+
+
 });
 
 // User
@@ -111,4 +119,3 @@ Route::group(['prefix' => 'pdf'], function () {
     Route::get('/turnover/{id}', [ReportController::class, 'turnoverPrint'])->name('pdf.turnover');
 
 });
-
