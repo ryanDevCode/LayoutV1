@@ -5,14 +5,96 @@
 @endsection
 
 @section('style')
+    <style>
+        /* .container-fluid {
+                            background-color: #dde0fc;
+                        } */
+
+        .right {
+            background-color: #dde0fc;
+
+        }
+
+        .left {
+            background-color: #312b70;
+        }
+
+        .left div {
+            margin: 20% 10%;
+        }
+
+        .card {
+            width: 400px;
+        }
+
+        @media (max-width: 700px) {
+            .card {
+                width: 70%;
+            }
+        }
+
+        #logo {
+            height: 100px;
+            width: auto;
+            margin: 0;
+            /* Set initial position */
+            transform: translateY(0);
+            /* Define the animation */
+            animation: mover 2s infinite alternate;
+        }
+
+        @keyframes mover {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @media (max-width: 576px) {
+
+            /* Small screens (sm) */
+            h4 {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            /* Medium screens (md) */
+            h4 {
+                font-size: 16px;
+            }
+        }
+
+
+    </style>
+
 @endsection
 
 @section('content')
     <div class="container-fluid p-0">
         <div class="row m-0">
-            <div class="col-12 p-0">
+            <div class="col-6 left d-none d-md-block d-sm-none text-white">
+                <div>
+                    <img src="{{ asset('assets/images/logo/logo1.png') }}" alt="" id="logo">
+                    <h1>Rkive</h1>
+                    <h4 class="d-lg-none">Administrative Solutions</h4>
+                    <p>Your administrative needs in one place</p>
+                </div>
+            </div>
+
+
+            <div class="col p-0 right">
+                {{-- <div class="d-none d-md-block d-lg-none">
+                    <!-- Your content goes here -->
+                    <h1>Youre on sm screen</h1>
+                </div> --}}
+
                 <div class="login-card">
-                    <div class="card w-25">
+                    <div class="card">
                         <div class="card-body">
                             @if (Session::has('success'))
                                 <div class="alert alert-success">
@@ -26,12 +108,14 @@
                                 </div>
                             @endif
 
-                            <form class="needs-validation theme-form" novalidate action="{{ route('login') }}" method="POST">
+                            <form class="needs-validation theme-form" novalidate action="{{ route('login') }}"
+                                method="POST">
                                 @csrf
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <div>
+                                    <div class="d-flex">
+                                        {{-- <h4 class="txt-primary"><img src="{{ asset('assets/images/logo/logo1.png') }}"
+                                                alt=""id="logo"> Sign in to your account</h4> --}}
                                         <h4>Sign in to your account</h4>
-                                        {{-- <p>Enter your email or username and password to log in</p> --}}
                                     </div>
 
                                     <div class="mode">
